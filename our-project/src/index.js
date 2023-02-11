@@ -1,15 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import devActions from "./reduxFolder/developerReducer";
+import createSagaMiddleware from "redux-saga";
 
-const store = configureStore({ reducer: devActions.reducer });
+import "./index.css";
+import App from "./App";
+import devActions from "./reduxFolder/developerReducer";
+import rootSaga from "./sagas";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = configureStore({
+  reducer: devActions.reducer,
+  middleware: [sagaMiddleware],
+});
+
+sagaMiddleware.run(rootSaga);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

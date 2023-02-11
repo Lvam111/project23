@@ -32,20 +32,21 @@ function AddDeveloper({ addnewDevToStore }) {
   };
   const handleSubmit = (event) => {
       event.preventDefault()
-    const id = JSON.stringify(Date.now())
-     fetch("http://localhost:3000/developers", {
-      method: "POST",
-      headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-      body: JSON.stringify({ ...developer, id }),
-    })
-    .then(res=>res.json())
-    .then((resObj) => {
-      addnewDevToStore(resObj.developer);
-      navigate("/")
-    });
+      addnewDevToStore(developer)
+    // const id = JSON.stringify(Date.now())
+    //  fetch("http://localhost:3000/developers", {
+    //   method: "POST",
+    //   headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json;charset=UTF-8",
+    //       },
+    //   body: JSON.stringify({ ...developer, id }),
+    // })
+    // .then(res=>res.json())
+    // .then((resObj) => {
+    //   addnewDevToStore(resObj.developer);
+       navigate("/")
+    // });
   };
 
   return (
@@ -97,6 +98,6 @@ function AddDeveloper({ addnewDevToStore }) {
   );
 }
 
-export default connect((store) => ({}), {
-  addnewDevToStore: devActions.addOneDevActionCreator,
+export default connect(null, {
+  addnewDevToStore: devActions.addOneDevRequestActionCreator
 })(AddDeveloper);

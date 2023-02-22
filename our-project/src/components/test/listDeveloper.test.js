@@ -4,10 +4,10 @@ import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 describe("listdeveloper", () => {
   test("renders correctly", () => {
-    const history = createMemoryHistory({ initialEntries: ["/"] });
+    const history = createMemoryHistory();
 
     render(
-      <Router history={history}>
+      <Router location = {history.location} navigator={history}>
         <ListDeveloper />
       </Router>
     );

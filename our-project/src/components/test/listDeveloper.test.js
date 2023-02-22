@@ -7,7 +7,7 @@ describe("listdeveloper", () => {
     const history = createMemoryHistory();
 
     render(
-      <Router location = {history.location} navigator={history}>
+      <Router location={history.location} navigator={history}>
         <ListDeveloper />
       </Router>
     );

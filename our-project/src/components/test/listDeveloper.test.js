@@ -13,9 +13,11 @@ describe("listdeveloper", () => {
     );
     const h1 = screen.getByRole("heading");
     expect(h1).toBeInTheDocument();
+    const btn = screen.getByRole("button");
+    expect(btn).toBeInTheDocument();
+    const th = screen.getByRole("columnheader", { name: "id" });
+    expect(th).toBeInTheDocument();
+    const tr = screen.getByRole("row");
+    expect(tr).toBeInTheDocument();
   });
-
-  test('',()=>{
-    
-  })
 });

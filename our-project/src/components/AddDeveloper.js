@@ -30,9 +30,9 @@ function AddDeveloper({ addnewDevToStore }) {
       setDeveloper({ ...developer, [e.target.name]: e.target.value });
     }
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
       event.preventDefault()
-      addnewDevToStore(developer)
+      await addnewDevToStore(developer)
     // const id = JSON.stringify(Date.now())
     //  fetch("http://localhost:3000/developers", {
     //   method: "POST",

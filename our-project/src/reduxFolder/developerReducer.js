@@ -6,7 +6,7 @@ export const Types = {
   Add_ONE_DEV_REQUEST: "ADD_ONE_DEV_REQUEST",
   Add_ONE_DEV_SUCCESS: "ADD_ONE_DEV_SUCCESS",
   GET_ONE_DEV: "GET_ONE_DEV",
-  DELETE_ONE_DEV: "DELETE_ONE_DEV",
+  DELETE_ONE_DEV_REQUEST: "DELETE_ONE_DEV_REQUEST",
   UPDATE_ONE_DEV: "UPDATE_ONE_DEV",
   // PATCH_ONE_DEV:"PATCH_ONE_DEV",
 };
@@ -21,7 +21,7 @@ const devActions = {
     
   }),
   getOneDevActionCreator: (developer) => ({
-    type: Types.DELETE_ONE_DEV,
+    type: Types.GET_ONE_DEV,
     developer,
   }),
   // addOneDevSuccessActionCreator: (developer) => ({
@@ -32,8 +32,8 @@ const devActions = {
     type: Types.Add_ONE_DEV_REQUEST,
     developer
   }),
-  deleteOneDevActionCreator: (id) => ({
-    type: Types.DELETE_ONE_DEV,
+  deleteOneDevRequestActionCreator: (id) => ({
+    type: Types.DELETE_ONE_DEV_REQUEST,
     id,
   }),
   updateOneDevActionCreator: (id, developer) => ({
@@ -47,30 +47,11 @@ const devActions = {
         ...state,
         developers: action.developers,
       }),
-      [Types.GET_ALL_DEVS_REQUEST]: (state) => ({
-        state,
-       
-      }),
-      [Types.Add_ONE_DEV_SUCCESS]: (state) => ({state}),
-      [Types.Add_ONE_DEV_REQUEST]: (state) => ({
-        state
-       
-      }),
-      [Types.DELETE_ONE_DEV]: (state, action) => {
-        const developers = state.developers.filter(
-          (dev) => dev.id !== action.id
-        );
-
-        return { ...state, developers };
-      },
-      [Types.UPDATE_ONE_DEV]: (state, action) => {
-        const newArr = state.developers.map((dev) => {
-          if (dev.id === action.id) return action.developer; //   azu tedy nahi         [azu,luwam,nahi]                            tedy=> luwam
-          return dev;
-        });
-
-        return { ...state, developers: newArr };
-      },
+      [Types.GET_ALL_DEVS_REQUEST]: (state) => (state),
+      // [Types.Add_ONE_DEV_SUCCESS]: (state) => (state),
+      [Types.Add_ONE_DEV_REQUEST]: (state) => (state),
+      [Types.DELETE_ONE_DEV_REQUEST]: (state) => (state),
+      [Types.UPDATE_ONE_DEV]: (state) => (state)
 
       // get one, update and delete
     },

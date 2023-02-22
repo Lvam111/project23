@@ -7,17 +7,19 @@ function Developer({ developer, deleteDevFromStore }) {
   const navigate = useNavigate()
   const deleteFun = async () => {
     console.log(developer.id)
-    fetch(`http://localhost:3000/developers/${developer.id}`, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json;charset=UTF-8",
-      },
-    })
-      .then(res => res.json()) 
-      .then(res=>res.success && deleteDevFromStore(developer.id))
-      .then(res=>console.log(res))
-      .catch(err=>console.log(err,'err in deleting 12'));
+    await deleteDevFromStore(developer.id)
+   
+    // fetch(`http://localhost:3000/developers/${developer.id}`, {
+    //   method: "DELETE",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json;charset=UTF-8",
+    //   },
+    // })
+    //   .then(res => res.json()) 
+    //   .then(res=>res.success && deleteDevFromStore(developer.id))
+    //   .then(res=>console.log(res))
+    //   .catch(err=>console.log(err,'err in deleting 12'));
   };
   const handleEdit = () =>{
     navigate(`/update/${developer.id}`)
@@ -39,7 +41,7 @@ function Developer({ developer, deleteDevFromStore }) {
   );
 }
 
-export default connect((store) => ({}), {
-  deleteDevFromStore: devActions.deleteOneDevActionCreator,
-  
+export default connect(null, {
+  deleteDevFromStore: devActions.deleteOneDevRequestActionCreator,
+
 })(Developer);

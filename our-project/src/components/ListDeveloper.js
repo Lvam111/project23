@@ -7,7 +7,9 @@ import { useNavigate } from "react-router-dom";
 function ListDeveloper({ developers, fetchDevelopers }) {
   const navigate = useNavigate();
   useEffect(() => {
-    fetchDevelopers();
+    // setTimeout(()=>
+    fetchDevelopers()
+    //,1000);// for checking if it works.
     //  fetch("http://localhost:3000/developers")
     //   .then((res) => res.json())
     //   .then((resObj) => {
@@ -18,9 +20,11 @@ function ListDeveloper({ developers, fetchDevelopers }) {
 
   return (
     <div>
-      <div>
+      <div data-testid="list-1">
+       <h1>ListDevelopers</h1> 
         {" "}
-        ListDevelopes<button onClick={() => navigate("/Add")}>Add</button>
+        
+        <button onClick={() => navigate("/Add")}>Add</button>
       </div>
 
       <table>

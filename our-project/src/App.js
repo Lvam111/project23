@@ -12,17 +12,16 @@ import UpdateDev from "./components/UpdateDev";
 function App() {
   return (
     <Router>
-
+    <div className="App">
+      hi
+     </div>
       <Routes>
         <Route path="/" exact element ={<ListDeveloper/>}></Route>
         <Route path='/Add' exact element ={<AddDeveloper/>}></Route>
         <Route path='/update/:id' exact element ={<UpdateDev/>}></Route>
       </Routes>
     </Router>
-    // <div className="App">
-    //   <AddDeveloper/>
-    //   <ListDeveloper />
-    // </div>
+ 
   );
 }
 

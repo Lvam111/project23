@@ -18,23 +18,24 @@ function UpdateDev({ developers, updateStorebyId }) {
   }, []);
   const handleUpdate = (event) => {
     event.preventDefault()
-     fetch(`http://localhost:3000/developers/${selectedDeveloper.id}`, {
-      method: "PUT",
-      headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-      body: JSON.stringify(selectedDeveloper),
-    })
-    .then(res=>res.json())
-    .then((res) => {
-      console.log(res.developer,'31 here')
-      updateStorebyId(selectedDeveloper.id, res.developer)
-      console.log(developers,'updated devs 31')
-      navigate("/")
-    })
-    .catch((err) => console.log(err, "error from 12 updating"));
-    
+    updateStorebyId(id,selectedDeveloper)
+    //  fetch(`http://localhost:3000/developers/${selectedDeveloper.id}`, {
+    //   method: "PUT",
+    //   headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json;charset=UTF-8",
+    //       },
+    //   body: JSON.stringify(selectedDeveloper),
+    // })
+    // .then(res=>res.json())
+    // .then((res) => {
+    //   console.log(res.developer,'31 here')
+    //   updateStorebyId(selectedDeveloper.id, res.developer)
+    //   console.log(developers,'updated devs 31')
+    //   navigate("/")
+    // })
+    // .catch((err) => console.log(err, "error from 12 updating"));
+    navigate("/")
   };
   const handleChange = (ev) => {
     setSelectedDeveloper({
